@@ -8,9 +8,11 @@ const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
 
 //var1 якщо елемент пустий, або переписується наново весь
 //galleryContainer.innerHTML = galleryItemsMarkup;
-galleryContainer.insertAdjacentHTML("beforeend", galleryItemsMarkup);
+galleryContainer.insertAdjacentHTML("beforeend", galleryItemsMarkup);// додали в розмітку
 
 galleryContainer.addEventListener("click", onGalleryContainerClick);
+
+let instance;
 
 function createGalleryItemsMarkup(images) {
   return images
@@ -32,24 +34,25 @@ function createGalleryItemsMarkup(images) {
 }
 
 function onGalleryContainerClick(evt) {
-  evt.preventDefault();
+    evt.preventDefault();
 
-  const srcTarget = evt.target.dataset.source;
+    const srcTarget = evt.target.dataset.source;
 
-  const instance = basicLightbox.create(`
+    instance = basicLightbox.create(`
     <img src="${srcTarget}" width="800" height="600">
 `);
-  instance.show();
+    instance.show();
 
-  //const elem = instance.element();
+    document.addEventListener("keydown", onEscapeClick, { once: true});
+}
 
-    
-  document.addEventListener("keydown", (e) => {
-    if (e.code === "Escape") {
-        //elem.remove();
+function onEscapeClick(event) {
+    console.log('esc');
+    if (event.code == "Escape") {
         instance.close();
     }
-  });
-}
+  };
+
+
 
 
