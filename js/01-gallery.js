@@ -6,6 +6,8 @@ import { galleryItems } from "./gallery-items.js";
 const galleryContainer = document.querySelector(".gallery");
 const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
 
+//var1 якщо елемент пустий, або переписується наново весь
+//galleryContainer.innerHTML = galleryItemsMarkup;
 galleryContainer.insertAdjacentHTML("beforeend", galleryItemsMarkup);
 
 galleryContainer.addEventListener("click", onGalleryContainerClick);
@@ -39,11 +41,15 @@ function onGalleryContainerClick(evt) {
 `);
   instance.show();
 
-  const elem = instance.element();
+  //const elem = instance.element();
 
+    
   document.addEventListener("keydown", (e) => {
     if (e.code === "Escape") {
-      elem.remove();
+        //elem.remove();
+        instance.close();
     }
   });
 }
+
+
