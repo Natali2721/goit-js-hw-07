@@ -8,7 +8,7 @@ const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
 
 //var1 якщо елемент пустий, або переписується наново весь
 //galleryContainer.innerHTML = galleryItemsMarkup;
-galleryContainer.insertAdjacentHTML("beforeend", galleryItemsMarkup);// додали в розмітку
+galleryContainer.insertAdjacentHTML("beforeend", galleryItemsMarkup); // додали в розмітку
 
 galleryContainer.addEventListener("click", onGalleryContainerClick);
 
@@ -37,26 +37,25 @@ function onGalleryContainerClick(evt) {
   evt.preventDefault();
 
   //console.log(evt.target.classList.value);
-  if (evt.target.classList.value !== 'gallery__image') {
-  return;
+  if (evt.target.classList.value !== "gallery__image") {
+    return;
   }
 
   const srcTarget = evt.target.dataset.source;
 
-  instance = basicLightbox.create(`<img src="${srcTarget}" width="800" height="600">`);
-  
+  instance = basicLightbox.create(
+    `<img src="${srcTarget}" width="800" height="600">`
+  );
+
   instance.show();
 
-  document.addEventListener("keydown", onEscapeClick, { once: true});
+  document.addEventListener("keydown", onEscapeClick);
 }
 
 function onEscapeClick(event) {
-  //console.log('esc');
+  console.log("esc");
   if (event.code == "Escape") {
     instance.close();
+    document.removeEventListener("keydown", onEscapeClick);
   }
-};
-
-
-
-
+}
