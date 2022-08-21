@@ -1,14 +1,14 @@
-import { galleryItems } from "./gallery-items.js";
+import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 //console.log(galleryItems);
 
-const galleryContainer = document.querySelector(".gallery");
+const galleryContainer = document.querySelector('.gallery');
 const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
 
 //var1 якщо елемент пустий, або переписується наново весь
 //galleryContainer.innerHTML = galleryItemsMarkup;
-galleryContainer.insertAdjacentHTML("beforeend", galleryItemsMarkup); // додали в розмітку
+galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup); // додали в розмітку
 
 function createGalleryItemsMarkup(images) {
   return images
@@ -23,14 +23,13 @@ function createGalleryItemsMarkup(images) {
   </a>
 `;
     })
-    .join("");
+    .join('');
 }
 
-let gallery = new SimpleLightbox(".gallery a", {
-  captionsData: "alt",
-  captionDelay: "250",
+let gallery = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: '250',
+  overlayOpacity: '0.6',
 });
 
-gallery.on("show.simplelightbox", function () {});
-
-const slideDescr = document.querySelector(".sl-caption");
+gallery.on('show.simplelightbox', function () {});
