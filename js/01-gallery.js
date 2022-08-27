@@ -1,16 +1,16 @@
-import { galleryItems } from "./gallery-items.js";
+import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 //console.log(galleryItems);
 
-const galleryContainer = document.querySelector(".gallery");
+const galleryContainer = document.querySelector('.gallery');
 const galleryItemsMarkup = createGalleryItemsMarkup(galleryItems);
 
 //var1 якщо елемент пустий, або переписується наново весь
 //galleryContainer.innerHTML = galleryItemsMarkup;
-galleryContainer.insertAdjacentHTML("beforeend", galleryItemsMarkup); // додали в розмітку
+galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup); // додали в розмітку
 
-galleryContainer.addEventListener("click", onGalleryContainerClick);
+galleryContainer.addEventListener('click', onGalleryContainerClick);
 
 let instance;
 
@@ -30,14 +30,18 @@ function createGalleryItemsMarkup(images) {
 </div>
         `;
     })
-    .join("");
+    .join('');
 }
 
 function onGalleryContainerClick(evt) {
   evt.preventDefault();
 
   //console.log(evt.target.classList.value);
-  if (evt.target.classList.value !== "gallery__image") {
+
+  // if (event.target.nodeName !== "IMG") {
+  //  return;
+  //}
+  if (evt.target.classList.value !== 'gallery__image') {
     return;
   }
 
@@ -49,13 +53,13 @@ function onGalleryContainerClick(evt) {
 
   instance.show();
 
-  document.addEventListener("keydown", onEscapeClick);
+  document.addEventListener('keydown', onEscapeClick);
 }
 
 function onEscapeClick(event) {
-  console.log("esc");
-  if (event.code == "Escape") {
+  console.log('esc');
+  if (event.code == 'Escape') {
     instance.close();
-    document.removeEventListener("keydown", onEscapeClick);
+    document.removeEventListener('keydown', onEscapeClick);
   }
 }
