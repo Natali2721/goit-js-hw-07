@@ -31,5 +31,3 @@ let gallery = new SimpleLightbox('.gallery a', {
   captionDelay: '250',
   overlayOpacity: '0.6',
 });
-
-gallery.on('show.simplelightbox', function () {});
